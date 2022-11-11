@@ -14,6 +14,8 @@ Static files used by he site www.gainsbourg.net
 
 **docker-compose:** version 2.11.2 minimum
 
+**server-gainsbourg-net:** [Traefik](https://github.com/lougaou/server-gainsbourg-net) must be started with certificates
+
 ## Installation
 
 ```bash
