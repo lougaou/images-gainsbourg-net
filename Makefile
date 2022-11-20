@@ -6,7 +6,7 @@ DOCKER        	= docker
 DOCKER_COMP   	= docker-compose
 
 # Containers names
-CONTAINER_FRONTAL = gainsbourg-images
+CONTAINER_FRONTAL = images
 
 # Alias
 RUN_IN_CONTAINER_FRONTAL = $(DOCKER) exec -it $(CONTAINER_FRONTAL)

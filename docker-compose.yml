@@ -1,18 +1,18 @@
 version: '3.9'
 services:
-    gainsbourg-images:
+    images:
         image: nginx:1.23.1
-        container_name: gainsbourg-images
+        container_name: images
         restart: unless-stopped
         labels:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik_network"
-        - "traefik.http.routers.gainsbourg-images-http.entrypoints=web"
-        - "traefik.http.routers.gainsbourg-images-http.middlewares=https-redirect@file"
-        - "traefik.http.routers.gainsbourg-images-https.tls=true"
-        - "traefik.http.routers.gainsbourg-images-https.entrypoints=websecure"
-        - "traefik.http.routers.gainsbourg-images-http.rule=Host(`images.gainsbourg.net`)"
-        - "traefik.http.routers.gainsbourg-images-https.rule=Host(`images.gainsbourg.net`)"
+        - "traefik.http.routers.images-http.entrypoints=web"
+        - "traefik.http.routers.images-http.middlewares=https-redirect@file"
+        - "traefik.http.routers.images-https.tls=true"
+        - "traefik.http.routers.images-https.entrypoints=websecure"
+        - "traefik.http.routers.images-http.rule=Host(`images.gainsbourg.net`)"
+        - "traefik.http.routers.images-https.rule=Host(`images.gainsbourg.net`)"
         volumes:
         - $PWD/www/:/images
         - $PWD/../logs/images.gainsbourg.net:/var/log/nginx
