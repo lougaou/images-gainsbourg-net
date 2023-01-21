@@ -6,4 +6,4 @@
 /www
 
 # IDE - VSCode
-.vscode/*
+/.vscode/*.log
