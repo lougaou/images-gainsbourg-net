@@ -1,24 +1,22 @@
-version: '3.9'
+version: '3.3'
+
 services:
-    images:
-        image: nginx:1.23.2
-        container_name: images
-        restart: unless-stopped
-        labels:
-        - "traefik.enable=true"
-        - "traefik.docker.network=traefik_network"
-        - "traefik.http.routers.images-http.entrypoints=web"
-        - "traefik.http.routers.images-http.middlewares=https-redirect@file"
-        - "traefik.http.routers.images-https.tls=true"
-        - "traefik.http.routers.images-https.entrypoints=websecure"
-        - "traefik.http.routers.images-http.rule=Host(`images.gainsbourg.net`)"
-        - "traefik.http.routers.images-https.rule=Host(`images.gainsbourg.net`)"
-        volumes:
-        - $PWD/www/:/images
-        - $PWD/../logs/images.gainsbourg.net:/var/log/nginx
-        - $PWD/vhosts:/etc/nginx/conf.d
-        networks:
-        - "traefik_network"
+  images:
+    container_name: images
+    image: nginx
+    restart: always
+    networks:
+      - traefik_network
+    volumes:
+      - ./www/:/images
+      - ./vhosts/prod:/etc/nginx/conf.d
+    labels:
+      - traefik.enable=true
+      - traefik.port=80
+      - traefik.http.routers.images.rule=Host(`images.gainsbourg.net`)
+      - traefik.http.routers.images.entrypoints=websecure
+      - traefik.http.routers.images.tls=true
+      - traefik.http.routers.images.tls.certresolver=myresolver
 
 networks:
   traefik_network:
