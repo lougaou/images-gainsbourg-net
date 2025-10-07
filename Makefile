@@ -3,7 +3,7 @@
 
 # Executables: local
 DOCKER        	= docker
-DOCKER_COMP   	= docker-compose
+DOCKER_COMP   	= docker compose
 
 # Containers names
 CONTAINER_FRONTAL = images
