@@ -1,8 +1,8 @@
 services:
   images:
     container_name: images
-    image: nginx
-    restart: always
+    image: nginx:1.30.3
+    restart: unless-stopped
     networks:
       - traefik_network
     volumes:
@@ -10,9 +10,11 @@ services:
       - ./vhosts/prod:/etc/nginx/conf.d
     labels:
       - traefik.enable=true
-      - traefik.port=80
+      - traefik.docker.network=traefik_network
+      - traefik.http.services.images.loadbalancer.server.port=80
       - traefik.http.routers.images.rule=Host(`images.gainsbourg.net`)
       - traefik.http.routers.images.entrypoints=websecure
+      - traefik.http.routers.images.service=images
       - traefik.http.routers.images.tls=true
       - traefik.http.routers.images.tls.certresolver=myresolver
 
