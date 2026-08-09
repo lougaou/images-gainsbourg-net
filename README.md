@@ -2,7 +2,7 @@
 
 Static files used by he site www.gainsbourg.net
 
-![Nginx](https://img.shields.io/badge/Ngnix-v1.30.3-blue.svg)
+![Nginx](https://img.shields.io/badge/Ngnix-v1.30.4-blue.svg)
 
 ## Local DEV requirements
 
