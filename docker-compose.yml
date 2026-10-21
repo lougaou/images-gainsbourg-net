@@ -1,7 +1,7 @@
 services:
   images:
     container_name: images
-    image: nginx:1.30.4
+    image: nginx:1.30.6
     restart: unless-stopped
     networks:
       - traefik_network
